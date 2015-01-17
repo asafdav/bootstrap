@@ -41,7 +41,9 @@ angular.module('ui.bootstrap.dropdown', [])
     }
 
     var $element = openScope.getElement();
-    if( evt && openScope.getAutoClose() === 'outsideClick' && $element && $element[0].contains(evt.target) ) {
+    if( evt && openScope.getAutoClose() === 'outsideClick' && $element &&
+      ($element[0].contains(evt.target) || angular.element(evt.target).closest(document.documentElement).length === 0 )
+    ) {
       return;
     }
 
